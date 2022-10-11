@@ -22,7 +22,6 @@ const listProductById = async (request, response) => {
 const addProduct = async (request, response) => {
   const { name } = request.body;
   const { message } = await productsService.addProduct({ name });
-  console.log(message);
 
   response.status(201).json({
     name,

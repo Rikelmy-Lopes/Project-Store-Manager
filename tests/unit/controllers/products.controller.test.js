@@ -13,6 +13,7 @@ const { products } = require('./mock/products.controller.mock')
 
 describe('Testes de unidade do Controller de products', () => {
   afterEach(sinon.restore)
+
   it('Listando todos os produtos', async () => {
     const res = {};
     const req = {};
@@ -46,7 +47,7 @@ describe('Testes de unidade do Controller de products', () => {
     expect(res.json).to.have.been.calledWith(products[0]);
   });
 
-      it('Listando produto por Id', async () => {
+    it('Listando produto por Id', async () => {
     const res = {};
     const req = {};
 
@@ -62,5 +63,25 @@ describe('Testes de unidade do Controller de products', () => {
 
     expect(res.status).to.have.been.calledWith(404);
     expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
-  });
+      });
+    
+    it('Adicionando um novo Produto', async () => {
+    const res = {};
+      const req = {
+        body: {
+        name: 'chocolate',
+      }
+    };
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon.stub(productsService, 'addProduct').resolves({ type: null, message: 4 })
+
+    await productsController.addProduct(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith({ name: 'chocolate', id: 4 });
+      });
+  
  })

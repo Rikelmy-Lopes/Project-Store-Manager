@@ -37,6 +37,21 @@ afterEach(sinon.restore)
     const result = await productsService.findById('NaN');
 
     expect(result.type).to.equal('INVALID_VALUE')
+    })
+  
+    it('Adicionando um novo Produto com sucesso', async () => {
+    sinon.stub(productsModel, 'addProduct').resolves(4)
+
+    const result = await productsService.addProduct({ name: 'chocolate'});
+
+    expect(result).to.be.deep.equal({ type: null, message: 4})
+    })
+  
+    it('Adicionando um novo Produto com "name" errado', async () => {
+
+    const result = await productsService.addProduct({ name: 12345});
+
+    expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"name" must be a string' })
   })
 
  })
