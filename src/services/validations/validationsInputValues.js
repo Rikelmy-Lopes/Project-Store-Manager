@@ -18,7 +18,16 @@ const validadeNameProduct = (product) => {
   return { type: null, message: '' };
 };
 
+const validadeSales = (sales) => {
+  const { error } = joiSchema.salesSchema.validate(sales);
+  if (error) {
+    return { type: 'INVALID_VALUE', message: '"sales" must be a array' };
+  }
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validateId,
   validadeNameProduct,
+  validadeSales,
 };
