@@ -1,7 +1,7 @@
-const { idSchema, nameSchema } = require('./schemas');
+const joiSchema = require('./schemas');
 
 const validateId = (id) => {
-  const { error } = idSchema.validate(id);
+  const { error } = joiSchema.idSchema.validate(id);
   if (error) {
      return { type: 'INVALID_VALUE', message: '"id" must be a number' };
   }
@@ -10,7 +10,7 @@ const validateId = (id) => {
 };
 
 const validadeNameProduct = (product) => {
-  const { error } = nameSchema.validate(product.name);
+  const { error } = joiSchema.nameSchema.validate(product.name);
   if (error) {
     return { type: 'INVALID_VALUE', message: '"name" must be a string' };
   }
