@@ -1,14 +1,3 @@
-const productsService = require('../services/products.service');
-
-const productIdExist = async (request, response, next) => {
-  const sales = request.body;
-  if (await productsService.productIdExist(sales)) {
-    next();
-    return;
-  }
-  response.status(404).json({ message: 'Product not found' });
-};
-
 const validadeProductId = (request, response, next) => {
   const sales = request.body;
   if (sales.every((property) => Object.prototype.hasOwnProperty.call(property, 'productId'))) {
@@ -32,7 +21,6 @@ const validadeQuantity = (request, response, next) => {
 };
 
 module.exports = {
-  productIdExist,
   validadeProductId,
   validadeQuantity,
 };

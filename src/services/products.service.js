@@ -27,7 +27,7 @@ const addProduct = async (product) => {
   return { type: null, message: insertId };
 };
 
-const productIdExist = async (sales) => {
+const productsIdsExist = async (sales) => {
   const foundIds = [];
   const promises = sales.map(async (sale) => {
     const result = await productsModel.productIdExist(sale.productId);
@@ -40,9 +40,32 @@ const productIdExist = async (sales) => {
   return false;
 };
 
+const productIdExist = async (productId) => {
+  const result = await productsModel.productIdExist(productId);
+  if (result.id) {
+    return true;
+  }
+  return false;
+};
+
+const updateProduct = async (product, id) => {
+  const errorName = inputValidators.validadeNameProduct(product);
+  if (errorName.type) {
+    return errorName;
+  }
+  const errorId = inputValidators.validateId(id);
+  if (errorId.type) {
+    return errorId;
+  }
+
+  await productsModel.updateProduct(product, id);
+};
+
 module.exports = {
   findAll,
   findById,
   addProduct,
+  productsIdsExist,
   productIdExist,
+  updateProduct,
 };

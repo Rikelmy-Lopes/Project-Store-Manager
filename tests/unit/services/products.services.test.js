@@ -56,7 +56,7 @@ afterEach(sinon.restore)
   
     it('Verifica se o id existe com sucesso', async () => {
     sinon.stub(productsModel, 'productIdExist').resolves({ id: 1, name: 'Martelo de Thor'})
-      const result = await productsService.productIdExist([{ 
+      const result = await productsService.productsIdsExist([{ 
         productId: 1,
         quantity: 1,
     }]);
@@ -66,7 +66,7 @@ afterEach(sinon.restore)
   
     it('Verifica se o id existe com sucesso', async () => {
     sinon.stub(productsModel, 'productIdExist').resolves({})
-      const result = await productsService.productIdExist([{ 
+      const result = await productsService.productsIdsExist([{ 
         productId: 999,
         quantity: 1,
     }]);

@@ -4,16 +4,16 @@
     "colId": "history",
     "containerId": "",
     "name": "localhost:3000/products",
-    "url": "localhost:3000/sales/2",
-    "method": "GET",
+    "url": "localhost:3000/products/4",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2022-10-11T18:58:45.907Z",
-    "modified": "2022-10-13T19:06:23.396Z",
+    "modified": "2022-10-13T20:27:25.246Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "[\n    {\n    \"productId\": 3,\n    \"quantity\": 1\n  }\n]",
+      "raw": "{\n  \"name\": \"Granada\"\n}",
       "form": []
     },
     "tests": []
