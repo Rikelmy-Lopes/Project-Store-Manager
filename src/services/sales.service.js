@@ -26,8 +26,41 @@ const findById = async (id) => {
   return { type: 'PRODUCT NOT FOUND', message: 'Sale not found' };
 };
 
+const saleIdExist = async (saleId) => {
+  const result = await salesModel.saleIdExist(saleId);
+  if (result.id) {
+    return true;
+  }
+  return false;
+};
+
+const deleteSale = async (saleId) => {
+  const error = inputValidators.validateId(saleId);
+  if (error.type) {
+    return error;
+  }
+
+  await salesModel.deleteSale(saleId);
+};
+
+const updateSale = async (sales, id) => {
+  const errorId = inputValidators.validateId(id);
+  if (errorId.type) {
+    return errorId;
+  }
+  const errorSales = inputValidators.validadeSales(sales);
+  if (errorSales.type) {
+    return errorSales;
+  }
+  
+  await salesModel.updateSale(sales, id);
+};
+
 module.exports = {
   addSale,
   findAll,
   findById,
+  deleteSale,
+  saleIdExist,
+  updateSale,
 };

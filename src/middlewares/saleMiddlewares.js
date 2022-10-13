@@ -1,3 +1,5 @@
+const saleService = require('../services/sales.service');
+
 const validadeProductId = (request, response, next) => {
   const sales = request.body;
   if (sales.every((property) => Object.prototype.hasOwnProperty.call(property, 'productId'))) {
@@ -20,7 +22,17 @@ const validadeQuantity = (request, response, next) => {
   next();
 };
 
+const saleIdExist = async (request, response, next) => {
+  const { id } = request.params;
+  if (await saleService.saleIdExist(id)) {
+    next();
+    return;
+  }
+  response.status(404).json({ message: 'Sale not found' });
+};
+
 module.exports = {
   validadeProductId,
   validadeQuantity,
+  saleIdExist,
 };

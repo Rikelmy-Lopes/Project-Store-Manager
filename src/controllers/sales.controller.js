@@ -28,8 +28,26 @@ const listSalesById = async (request, response) => {
   response.status(200).json(message);
 };
 
+const deleteSale = async (request, response) => {
+  const { id } = request.params;
+  await salesService.deleteSale(id);
+  response.status(204).send();
+};
+
+const updateSale = async (request, response) => {
+  const sales = request.body;
+  const { id } = request.params;
+  await salesService.updateSale(sales, id);
+  response.status(200).json({
+    saleId: id,
+    itemsUpdated: sales,
+  });
+};
+
 module.exports = {
   addSales,
   listAllSales,
   listSalesById,
+  deleteSale,
+  updateSale,
 };
