@@ -21,8 +21,8 @@ const findById = async (id) => {
     return error;
   }
 
-  const product = await salesModel.findById(id);
-  if (product) return { type: null, message: product };
+  const sale = await salesModel.findById(id);
+  if (sale) return { type: null, message: sale };
   return { type: 'PRODUCT NOT FOUND', message: 'Sale not found' };
 };
 
