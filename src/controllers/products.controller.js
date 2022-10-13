@@ -44,6 +44,12 @@ const deleteProduct = async (request, response) => {
   await productsService.deleteProduct(id);
   response.status(204).send();
 };
+
+const searchProduct = async (request, response) => {
+  const { q } = request.query;
+  const { message } = await productsService.searchProduct(q);
+  response.status(200).json(message);
+};
  
 module.exports = {
   listAllProducts,
@@ -51,4 +57,5 @@ module.exports = {
   addProduct,
   updateProduct,
   deleteProduct,
+  searchProduct,
 };
