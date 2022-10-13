@@ -1,7 +1,7 @@
 const salesModel = require('../models/sales.model');
 const inputValidators = require('./validations/validationsInputValues');
 
-const addProduct = async (sales) => {
+const addSale = async (sales) => {
   const error = inputValidators.validadeSales(sales);
   if (error.type) {
     return error;
@@ -11,5 +11,5 @@ const addProduct = async (sales) => {
 };
 
 module.exports = {
-  addProduct,
+  addSale,
 };

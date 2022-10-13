@@ -13,7 +13,18 @@ const products = [
   }
 ];
 
+const expectedPostSale = {
+  id: 3,
+  itemsSold: [
+    {
+      productId: 3,
+      quantity: 1
+    }
+  ]
+}
+
 
 module.exports = {
   products,
+  expectedPostSale
 }

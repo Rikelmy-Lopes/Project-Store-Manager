@@ -1,8 +1,8 @@
-const utilsService = require('../services/utils/sales.service.utils');
+const productsService = require('../services/products.service');
 
 const productIdExist = async (request, response, next) => {
   const sales = request.body;
-  if (await utilsService.productIdExist(sales)) {
+  if (await productsService.productIdExist(sales)) {
     next();
     return;
   }

@@ -50,8 +50,28 @@ afterEach(sinon.restore)
     it('Adicionando um novo Produto com "name" errado', async () => {
 
     const result = await productsService.addProduct({ name: 12345});
-
+    
     expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"name" must be a string' })
+    })
+  
+    it('Verifica se o id existe com sucesso', async () => {
+    sinon.stub(productsModel, 'productIdExist').resolves({ id: 1, name: 'Martelo de Thor'})
+      const result = await productsService.productIdExist([{ 
+        productId: 1,
+        quantity: 1,
+    }]);
+
+    expect(result).to.be.deep.equal(true)
+    })
+  
+    it('Verifica se o id existe com sucesso', async () => {
+    sinon.stub(productsModel, 'productIdExist').resolves({})
+      const result = await productsService.productIdExist([{ 
+        productId: 999,
+        quantity: 1,
+    }]);
+
+    expect(result).to.be.deep.equal(false)
   })
 
  })

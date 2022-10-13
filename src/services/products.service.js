@@ -27,8 +27,22 @@ const addProduct = async (product) => {
   return { type: null, message: insertId };
 };
 
+const productIdExist = async (sales) => {
+  const foundIds = [];
+  const promises = sales.map(async (sale) => {
+    const result = await productsModel.productIdExist(sale.productId);
+    if (result.id) {
+      foundIds.push(true);
+    }
+  });
+  await Promise.all(promises);
+  if (foundIds.length === sales.length) return true;
+  return false;
+};
+
 module.exports = {
   findAll,
   findById,
   addProduct,
+  productIdExist,
 };

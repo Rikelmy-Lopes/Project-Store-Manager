@@ -28,8 +28,18 @@ const addProduct = async (product) => {
   return insertId;
 };
 
+const productIdExist = async (productId) => {
+  const [[result]] = await connection.execute(
+    `SELECT * FROM StoreManager.products
+    WHERE id = ?`,
+    [productId],
+  );
+  return result || {};
+};
+
 module.exports = {
   findAll,
   findById,
   addProduct,
+  productIdExist,
 };
