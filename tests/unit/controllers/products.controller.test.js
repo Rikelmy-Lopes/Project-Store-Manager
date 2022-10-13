@@ -82,6 +82,28 @@ describe('Testes de unidade do Controller de products', () => {
 
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith({ name: 'chocolate', id: 4 });
+    });
+  
+      it('Atualizando um produto com sucesso', async () => {
+    const res = {};
+        const req = {
+          params: {
+          id: 1
+        },
+        body: {
+        name: 'granada',
+      }
+    };
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon.stub(productsService, 'updateProduct').resolves(undefined)
+
+    await productsController.updateProduct(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith({ name: 'granada', id: 1 });
       });
   
  })

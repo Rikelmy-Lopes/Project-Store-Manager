@@ -54,7 +54,7 @@ afterEach(sinon.restore)
     expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"name" must be a string' })
     })
   
-    it('Verifica se o id existe com sucesso', async () => {
+    it('Verifica se o ids existem com sucesso', async () => {
     sinon.stub(productsModel, 'productIdExist').resolves({ id: 1, name: 'Martelo de Thor'})
       const result = await productsService.productsIdsExist([{ 
         productId: 1,
@@ -64,7 +64,7 @@ afterEach(sinon.restore)
     expect(result).to.be.deep.equal(true)
     })
   
-    it('Verifica se o id existe com sucesso', async () => {
+    it('Verifica se os ids nao existem', async () => {
     sinon.stub(productsModel, 'productIdExist').resolves({})
       const result = await productsService.productsIdsExist([{ 
         productId: 999,
@@ -72,6 +72,41 @@ afterEach(sinon.restore)
     }]);
 
     expect(result).to.be.deep.equal(false)
-  })
+    })
+  
+      it('Verifica se o id existe com sucesso', async () => {
+    sinon.stub(productsModel, 'productIdExist').resolves({ id: 1, name: 'Martelo de Thor'})
+      const result = await productsService.productIdExist(1);
+
+    expect(result).to.be.deep.equal(true)
+      })
+  
+    it('Verifica se o id existe com erro', async () => {
+    sinon.stub(productsModel, 'productIdExist').resolves({})
+      const result = await productsService.productIdExist(999);
+
+    expect(result).to.be.deep.equal(false)
+    })
+  
+    it('Atualiza um produto com sucesso', async () => {
+    sinon.stub(productsModel, 'updateProduct').resolves(undefined)
+    const result = await productsService.updateProduct({name: 'granada'}, 1);
+
+    expect(result).to.be.equal(undefined)
+    })
+  
+    it('Tenta atualizar um produto com "product" invalido', async () => {
+    sinon.stub(productsModel, 'updateProduct').resolves(undefined)
+    const result = await productsService.updateProduct({name: NaN}, 1);
+
+    expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"name" must be a string' })
+    })
+  
+      it('Tenta atualizar um produto com "id" invalido', async () => {
+    sinon.stub(productsModel, 'updateProduct').resolves(undefined)
+    const result = await productsService.updateProduct({name: 'granada'}, 'Não é um id');
+
+    expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"id" must be a number' })
+    })
 
  })

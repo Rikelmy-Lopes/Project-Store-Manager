@@ -30,5 +30,12 @@ describe('Testes de unidade do Model de products', () => {
     const result = await productsModel.productIdExist(999);
     expect(result).to.be.deep.equal({});
     });
+  
+  it('atualizando um produto por id', async () => {
+    sinon.stub(connection, 'execute').resolves()
+    const result = await productsModel.updateProduct({ name: "granada" }, 1);
+    expect(result).to.be.equal(undefined)
+    });
+  
 })
  
