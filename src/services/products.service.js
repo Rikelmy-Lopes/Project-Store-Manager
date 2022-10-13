@@ -61,6 +61,15 @@ const updateProduct = async (product, id) => {
   await productsModel.updateProduct(product, id);
 };
 
+const deleteProduct = async (productId) => {
+  const error = inputValidators.validateId(productId);
+  if (error.type) {
+    return error;
+  }
+
+  await productsModel.deleteProduct(productId);
+};
+  
 module.exports = {
   findAll,
   findById,
@@ -68,4 +77,5 @@ module.exports = {
   productsIdsExist,
   productIdExist,
   updateProduct,
+  deleteProduct,
 };

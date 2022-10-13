@@ -38,10 +38,17 @@ const updateProduct = async (request, response) => {
     name: product.name,
   });
 };
+
+const deleteProduct = async (request, response) => {
+  const { id } = request.params;
+  await productsService.deleteProduct(id);
+  response.status(204).send();
+};
  
 module.exports = {
   listAllProducts,
   listProductById,
   addProduct,
   updateProduct,
+  deleteProduct,
 };
