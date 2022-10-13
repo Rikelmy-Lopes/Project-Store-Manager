@@ -102,9 +102,23 @@ afterEach(sinon.restore)
     expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"name" must be a string' })
     })
   
-      it('Tenta atualizar um produto com "id" invalido', async () => {
+    it('Tenta atualizar um produto com "id" invalido', async () => {
     sinon.stub(productsModel, 'updateProduct').resolves(undefined)
     const result = await productsService.updateProduct({name: 'granada'}, 'Não é um id');
+
+    expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"id" must be a number' })
+    })
+  
+    it('Testa se deleta um produto com sucesso', async () => {
+    sinon.stub(productsModel, 'deleteProduct').resolves(undefined)
+    const result = await productsService.deleteProduct(1);
+
+    expect(result).to.be.deep.equal(undefined)
+    })
+  
+    it('Tenta deletar um produto com id invalido', async () => {
+    sinon.stub(productsModel, 'deleteProduct').resolves(undefined)
+    const result = await productsService.deleteProduct(NaN);
 
     expect(result).to.be.deep.equal({ type: 'INVALID_VALUE', message: '"id" must be a number' })
     })

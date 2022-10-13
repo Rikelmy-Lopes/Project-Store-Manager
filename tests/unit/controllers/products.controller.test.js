@@ -106,4 +106,22 @@ describe('Testes de unidade do Controller de products', () => {
     expect(res.json).to.have.been.calledWith({ name: 'granada', id: 1 });
       });
   
+    it('Deletando um produto com sucesso', async () => {
+    const res = {};
+      const req = {
+        params: {
+          id: 1
+        }
+      };
+
+    res.status = sinon.stub().returns(res);
+    res.send = sinon.stub().returns();
+
+    sinon.stub(productsService, 'deleteProduct').resolves(undefined)
+
+    await productsController.deleteProduct(req, res);
+
+    expect(res.status).to.have.been.calledWith(204);
+      });
+  
  })

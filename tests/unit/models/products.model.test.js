@@ -32,10 +32,15 @@ describe('Testes de unidade do Model de products', () => {
     });
   
   it('atualizando um produto por id', async () => {
-    sinon.stub(connection, 'execute').resolves()
+    sinon.stub(connection, 'execute').resolves(undefined)
     const result = await productsModel.updateProduct({ name: "granada" }, 1);
     expect(result).to.be.equal(undefined)
     });
   
+    it('deletando um produto por id', async () => {
+    sinon.stub(connection, 'execute').resolves(undefined)
+    const result = await productsModel.deleteProduct(1);
+    expect(result).to.be.equal(undefined)
+    });
 })
  
