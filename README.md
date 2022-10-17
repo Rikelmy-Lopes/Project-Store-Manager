@@ -1,10 +1,75 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+
+# Project Store Manager
+
+API Rest para gerenciamento de Vendas usando o Banco de Dados SQL!
+
+
+## Rode Localmente
+
+
+### ⚠️Variaveis de Ambiente⚠️
+
+Para rodar esse Projeto, você vai precisar adicionar as seguintes variaveis de ambiente no seu arquivo .env:
+
+`MYSQL_HOST`
+
+`MYSQL_USER`
+
+`MYSQL_PASSWORD`
+
+`MYSQL_DATABASE`
+
+`MYSQL_PORT`
+
+`PORT`
+
+`HOST`
+
+Clone o Projeto
+
+```bash
+  git clone git@github.com:Rikelmy-Lopes/Project-Store-Manager.git
+```
+
+Vá para o diretorio do Projeto
+
+```bash
+  cd Project-Storage-Manager
+```
+
+Instale as Dependencias
+
+```bash
+  npm install
+```
+
+### Banco de Dados
+
+Execute as seguintes Querys SQL presentes nos arquivos:
+
+```
+migration.sql
+
+seed.sql
+```
+
+Inicie o Server
+
+```bash
+  npm start
+```
+
+Para desenvolvimento
+```bash
+  npm run debug
+```
+
+
+## Rode os Testes
+
+Para rodar os Testes
+
+```bash
+  npm test
+```
+
