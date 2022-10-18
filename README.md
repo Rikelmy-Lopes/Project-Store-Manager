@@ -112,6 +112,30 @@ Para desenvolvimento
 | :-------- | :------- | :-------------------------------- | :----------------
 | `{}`      | `objeto` | **Obrigatorio** | name: **Obrigatorio** |
   
+#### Atualiza um produto
+
+```http
+  PUT /products/${id}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `number` | **Obrigatorio**. Id do Produto |
+
+| Body | Type     | Description                | Chave do objeto |
+| :-------- | :------- | :------------------------- |:----------
+| `{}` | `objeto` | **Obrigatorio** | name: **Obrigatorio** |
+
+#### Deleta um produto
+
+```http
+  DELETE /products/${id}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `number` | **Obrigatorio**. Id do Produto |
+  
 </details>
 
 ## Rode os Testes
