@@ -64,6 +64,55 @@ Para desenvolvimento
   npm run debug
 ```
 
+## Documentação
+
+<details>
+  <summary><strong> API Reference </strong></summary>
+  
+  
+## API Reference
+
+
+
+#### Busca todos os Produtos
+
+```http
+  GET /products
+```
+
+#### Busca produto por Id
+
+```http
+  GET /products/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `number` | **Obrigatorio**. Id do Produto |
+
+
+#### Busca produto por Nome
+
+```http
+  GET /products/search?q
+```
+
+| Query | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `q`      | `string` | **Obrigatorio**. Nome do Produto |
+
+
+#### Adiciona um novo Produto
+
+```http
+  POST /products
+```
+
+| Body | Type     | Description                       | Chaves do Objeto |
+| :-------- | :------- | :-------------------------------- | :----------------
+| `{}`      | `objeto` | **Obrigatorio** | name: **Obrigatorio** |
+  
+</details>
 
 ## Rode os Testes
 
