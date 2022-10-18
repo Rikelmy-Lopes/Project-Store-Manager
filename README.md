@@ -146,3 +146,9 @@ Para rodar os Testes
   npm test
 ```
 
+## Tecnologias
+
+-   **[Express](https://expressjs.com/)**
+-   **[MySql](https://www.mysql.com/)**
+-   **[Joi](https://github.com/hapijs/joi)**
+
